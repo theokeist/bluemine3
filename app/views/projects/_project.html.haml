@@ -1,0 +1,32 @@
+%div{:id => "#{dom_id(project)}", :class => 'row align-items-start'}
+
+  %div{ :class => 'col-7' }
+    
+    %div
+      %h2= project.name
+
+    %div
+      %hr
+      %h4 Popis:
+      %p.text-break
+        = project.description
+
+  %div{ :class => 'col-auto' }
+  
+    %div{ :class => 'card' }
+    
+      %div{ :class => 'card-body' }
+
+        %div{ :class => 'row g-3 align-items-center'}
+
+          %div{ :class => 'col-auto' }
+            
+            = link_to 'Back to projects', projects_path, { class: 'btn btn-outlined-secondary' }
+
+          %div{ :class => 'col-auto' }
+
+            = link_to 'Edit this project', edit_project_path(@project), { class: 'btn btn-primary' }
+
+          %div{ :class => 'col-auto' }
+
+            = button_to 'Destroy this project', @project, method: :delete, class: 'btn btn-danger'
