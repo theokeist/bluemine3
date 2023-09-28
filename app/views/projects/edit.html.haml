@@ -1,11 +1,11 @@
 %h1 Editing project
 
-= render "form", project: @project
+= render 'form', project: @project
 
 %br
 
 %div
 
-  = link_to "Show this project", @project, { class: "btn btn-primary" }
+  = link_to 'Zobrazit', @project, { class: 'btn btn-outlined-secondary' }
   
-  = link_to "Back to projects", projects_path, { class: "btn btn-outlined-secondary" }
+  = link_to 'Zpět na výpis', projects_path, { class: 'btn btn-outlined-secondary' }

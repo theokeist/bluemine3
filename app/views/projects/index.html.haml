@@ -41,10 +41,10 @@
           %td{ :scope => "col" }
             = project.id
 
-          %td= link_to "Show this project", project, { class: "btn btn-sm btn-info" }
+          %td= link_to "Zobrazit", project, { class: "btn btn-sm btn-outlined-secondary"  }
 
             
-          %td= link_to 'Edit this project', edit_project_path(project), { class: 'btn btn-sm btn-primary' }
+          %td= link_to 'Upravit', edit_project_path(project), { class: 'btn btn-sm btn-outlined-secondary' }
 
 
-          %td= button_to 'Destroy this project', project, method: :delete, class: 'btn btn-sm btn-danger'
+          %td= button_to 'Smazat', project, method: :delete, class: 'btn btn-sm btn-danger'
