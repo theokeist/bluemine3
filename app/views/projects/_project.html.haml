@@ -1,32 +1,22 @@
 %div{:id => "#{dom_id(project)}", :class => 'row align-items-start'}
 
-  %div{ :class => 'col-7' }
-    
-    %div
-      %h2= project.name
-
-    %div
-      %hr
-      %h4 Popis:
-      %p.text-break
-        = project.description
-
-  %div{ :class => 'col-auto' }
-  
+.row.justify-content-evenly.align-items-center
+  .col
     %div{ :class => 'card' }
-    
+
       %div{ :class => 'card-body' }
 
-        %div{ :class => 'row g-3 align-items-center'}
+        %h1= project.name
+        %div{ :class => "btn-group", :role => "group" }
 
-          %div{ :class => 'col-auto' }
-            
-            = link_to 'Back to projects', projects_path, { class: 'btn btn-outlined-secondary' }
+          = link_to 'Zpět na výpis', projects_path, { class: 'btn btn-outline-primary' }
 
-          %div{ :class => 'col-auto' }
+          = link_to 'Upravit', edit_project_path(@project), { class: 'btn btn-outline-primary' }
 
-            = link_to 'Edit this project', edit_project_path(@project), { class: 'btn btn-primary' }
+          = button_to 'Smazat', @project, method: :delete, data: {confirm: "Opravdu ?"}, class: 'btn btn-danger'
 
-          %div{ :class => 'col-auto' }
-
-            = button_to 'Destroy this project', @project, method: :delete, class: 'btn btn-danger'
+%hr
+%div.p-3
+  %h4 Popis:
+  %p{ :style => "text-align: justify", :class => "text-break" }
+    = project.description

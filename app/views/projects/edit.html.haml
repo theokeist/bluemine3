@@ -1,4 +1,4 @@
-%h1 Editing project
+%h1 Upravit projekt
 
 = render 'form', project: @project
 
@@ -7,5 +7,5 @@
 %div
 
   = link_to 'Zobrazit', @project, { class: 'btn btn-outlined-secondary' }
-  
-  = link_to 'Zpět na výpis', projects_path, { class: 'btn btn-outlined-secondary' }
+
+  = link_to 'Zpět na výpis', :back, { class: 'btn btn-outlined-secondary' }

@@ -1,11 +1,17 @@
 %p.text-success
 = notice
 
-%h1 Projects
+.row.justify-content-evenly.align-items-center
+  .col
+    %div{ :class => 'card' }
+      %div{ :class => 'card-body' }
+        %div{ :class => 'row g-3 align-items-center'}
+          %div{ :class => 'col-auto' }
+            %h1.text-center PROJEKTY
+            = link_to 'Nový projekt', new_project_path, { class: 'btn btn-info' }
+    %hr
 
-= link_to "Nový projekt", new_project_path, { class: "btn btn-info" }
-
-#projects.table-responsive 
+#projects.table-responsive
 
   %table.table.align-middle
 
@@ -23,7 +29,7 @@
         %th{ :scope => "col" } Počet úkolů
 
     %tbody.table-group-divider
-      
+
       - @projects.each do |project|
 
         %tr
@@ -31,20 +37,21 @@
           %th{ :scope => "row" }
             = project.id
 
-          %th= project.name
+          %th= link_to project.name, project
 
-          %td{ :style => "word-wrap: break-word;min-width: 160px;max-width: 300px;" } 
-            = project.description
+          %td{ :style => "word-wrap: break-word;min-width: 160px;max-width: 300px; max-height: 300px;" }
+            = truncate(project.description, length: 300, omission: " ...")
 
           %td= project.created_at.strftime("%d.%m/%Y")
 
           %td{ :scope => "col" }
             = project.id
 
-          %td= link_to "Zobrazit", project, { class: "btn btn-sm btn-outlined-secondary"  }
+          %td
+            %div{ :class => "btn-group", :role => "group" }
 
-            
-          %td= link_to 'Upravit', edit_project_path(project), { class: 'btn btn-sm btn-outlined-secondary' }
+              = link_to "Zobrazit", project, { class: "btn btn-sm btn-outline-primary"  }
 
+              = link_to 'Upravit', edit_project_path(project), { class: 'btn btn-sm btn-outline-primary' }
 
-          %td= button_to 'Smazat', project, method: :delete, class: 'btn btn-sm btn-danger'
+              = button_to 'Smazat', project, method: :delete, class: 'btn btn-sm btn-outline-danger'
